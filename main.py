@@ -12,7 +12,6 @@ print("\n")
 print("----To insert the data enter 1----")
 print("----To read the data enter 2------")
 print("----To book a ticket 3----")
-# delete,update need to be done
 print("----To delete the data enter 4----")
 print("----To update the data enter 5----")
 
