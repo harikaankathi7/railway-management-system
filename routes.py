@@ -23,4 +23,16 @@ class rdetails:
             if destination in routes:
                 train_no[i[0]]=[i[1],i.index(destination)-stop]
         return train_no
-    
+    def delete(self,trainno):
+        self.cur=self.con.cursor()
+        self.cur.execute(f"delete from routes where train_no={trainno}")
+        self.con.commit()
+        print(f"Train details of trainno {trainno} has been deleted from routes table")
+    def update(self,trainno,col,val):
+        self.cur=self.con.cursor()
+        self.cur.execute(f"set sql_safe_updates=0")
+        self.con.commit()
+        self.cur=self.con.cursor()
+        self.cur.execute(f"update routes set"+col+f"='{val}' where train_no={trainno}")
+        self.con.commit()
+        print("updated values successfully....")

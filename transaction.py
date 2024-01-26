@@ -14,4 +14,10 @@ class trandetails:
         self.cur.execute(f"insert into transactions values({tid},{pid},{fare})")
         self.con.commit()
         print("data has been inserted successfully..")
+
+    def delete(self,pid):
+        self.cur=self.con.cursor()
+        self.cur.execute(f"delete from transactions where p_id={pid}")
+        self.con.commit()
+        print(f"passenger {pid} data has been deleted from trasactions table")
     

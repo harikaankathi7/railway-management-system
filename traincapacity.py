@@ -37,6 +37,19 @@ class tcdetails:
         self.cur.execute(f"update train_capacity set "+compartment+f"={seatno} where train_no={train_no}")
         self.con.commit()
         return seatno
+    def delete(self,trainno):
+        self.cur=self.con.cursor()
+        self.cur.execute(f"delete from train_capacity where train_no={trainno}")
+        self.con.commit()
+        print(f"Train details of trainno {trainno} has been deleted from train_capacity table")
+    def update(self,trainno,col,val):
+        self.cur=self.con.cursor()
+        self.cur.execute(f"set sql_safe_updates=0")
+        self.con.commit()
+        self.cur=self.con.cursor()
+        self.cur.execute(f"update train_capacity set "+col+f"={val} where train_no={trainno}")
+        self.con.commit()
+        print(f"Values updated successfully...")
 
 
         

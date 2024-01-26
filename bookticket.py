@@ -23,3 +23,8 @@ class bkdetails:
         self.con.commit()
         print("data has been inserted successfully..")
         return bid
+    def delete(self,pid):
+        self.cur=self.con.cursor()
+        self.cur.execute(f"delete from book_tickets where p_id={pid}")
+        self.con.commit()
+        print(f"passenger {pid} data has been deleted from book_tickets table")

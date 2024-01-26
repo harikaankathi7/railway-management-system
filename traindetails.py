@@ -43,6 +43,11 @@ class tdetails:
         self.cur=self.con.cursor()
         self.cur.execute(f"select names from station_names")
         return self.cur.fetchall()
+    def delete(self,trainno):
+        self.cur=self.con.cursor()
+        self.cur.execute(f"delete from train_details where train_no={trainno}")
+        self.con.commit()
+        print(f"Train details of tarinno {trainno} has been deleted from train_details table")
 
         
 

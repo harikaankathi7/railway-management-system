@@ -12,7 +12,6 @@ print("\n")
 print("----To insert the data enter 1----")
 print("----To read the data enter 2------")
 print("----To book a ticket 3----")
-# delete,update
 print("----To delete the data enter 4----")
 print("----To update the data enter 5----")
 
@@ -143,7 +142,7 @@ if opr==3:
         tid=int(input("Enter your Transaction ID:"))
         try:
             obj4.insertdetails(tid,pid,fare)
-        except Exception as e:
+        except Exception as e: 
             print(f"Error while inserting the data :{e}")
         # update seats availability
         try:
@@ -166,6 +165,50 @@ if opr==3:
         print("Class:",cls)
         print("Seatno:",seat_no)
         print("Train_no:",train_no)
+
+# delete the records with primary key
+if opr==4:
+    print("To delete the passenger data from database enter 1")
+    print("To delete the traindetails data from database enter 2")
+    insert_opr=int(input("Please enter the operation you want to perform:"))
+    if insert_opr==1:
+      pid=int(input("Please enter the passengerid to delete the passenger data:"))
+      obj=bkdetails()
+      obj.delete(pid)
+      obj1=trandetails()
+      obj1.delete(pid)
+      obj2=pdetails()
+      obj2.delete(pid)
+    if insert_opr==2:
+        trainno=int(input("Please enter trainno to delete the train details:"))
+        obj=tdetails()
+        obj.delete(trainno)
+        obj1=tcdetails()
+        obj1.delete(trainno)
+        obj2=rdetails()
+        obj2.delete(trainno)
+# updating the table with the help of primary key
+if opr==5:
+    print("To update the data from traincapacity table enter 1")
+    print("To update the values from routes table enter 2")
+    insert_opr=int(input("Please enter the operation you want to perform"))
+    if insert_opr==1:
+        print("Columns: 'ac_1' 'ac_2' 'ac_3' 'sl' 'gen'")
+        trainno=int(input("Please enter the trainno:"))
+        col=input("Please enter the column you want to update:")
+        val=int(input("Please enter the updated value:"))
+        obj=tcdetails()
+        obj.update(trainno,col,val)
+    if insert_opr==2:
+        print("Columns: 'stop_1' 'stop_2' 'stop_3' 'stop_4'")
+        trainno=int(input("Please enter trainno:"))
+        col=input("Please enter the column you wnat to update:")
+        val=input("Please enter the updated value:")
+        obj=rdetails()
+        obj.update(trainno,col,val)
+
+
+
 
 
 

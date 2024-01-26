@@ -23,3 +23,10 @@ class pdetails:
         self.con.commit()
         print("data has been inserted successfully..")
         return pid
+    
+    def delete(self,pid):
+        #deleting records based on the primary key(pid)
+        self.cur=self.con.cursor()
+        self.cur.execute(f"delete from passenger where p_id={pid}")
+        self.con.commit()
+        print(f"data of passenger {pid} is deleted")
